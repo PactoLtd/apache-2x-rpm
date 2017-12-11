@@ -10,8 +10,8 @@ pipeline {
     stages {
         stage('Clean') { 
             steps { 
-              sh 'sudo rm -f *.tar.gz'
-              sh 'sudo rm -rf httpd-*'
+              sh 'rm -f *.tar.gz'
+              sh 'rm -rf httpd-*'
             }
         }
         stage('Checkout'){
@@ -23,7 +23,7 @@ pipeline {
             steps {
               sh 'pwd'
               sh 'ls -lah'
-              sh 'sudo ./build.sh compile --epoch=${EPOCH}'
+              sh './build.sh compile --epoch=${EPOCH}'
             }
         }
     }
