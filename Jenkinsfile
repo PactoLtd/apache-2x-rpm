@@ -4,7 +4,6 @@ pipeline {
     agent any 
 
     environment {
-      currentBuild.result = "SUCCESS"
       EPOCH = System.currentTimeMillis()
     }
     
@@ -26,11 +25,6 @@ pipeline {
               sh 'ls -lah'
               sh 'sudo ./build.sh compile --epoch=${EPOCH}'
             }
-        }
-        stage('Release') {
-          steps{
-            sh echo 'nothing implemented'
-          }
         }
     }
 }
