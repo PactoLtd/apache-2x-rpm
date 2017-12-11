@@ -5,7 +5,7 @@ set -e
 #
 # Script vars
 #
-__HTTPD_VERSION=2.2.31
+__HTTPD_VERSION=2.2.34
 __SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 __PARENT_DIR="$(dirname "$__SCRIPT_DIR")"
 
