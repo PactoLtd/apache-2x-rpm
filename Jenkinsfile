@@ -1,8 +1,13 @@
+#!groovy
+
 pipeline {
     agent any 
-    currentBuild.result = "SUCCESS"
-    epoch = System.currentTimeMillis()
 
+    environment {
+      currentBuild.result = "SUCCESS"
+      EPOCH = System.currentTimeMillis()
+    }
+    
     stages {
         stage('Clean') { 
             steps { 
@@ -19,12 +24,13 @@ pipeline {
             steps {
               sh 'pwd'
               sh 'ls -lah'
-              sh 'sudo ./build.sh compile --epoch='+epoch
-              sh 'sudo chown -R ec2-user:ec2-user *'
+              sh 'sudo ./build.sh compile --epoch=${EPOCH}'
             }
         }
         stage('Release') {
-          sh echo 'nothing implemented'
+          steps{
+            sh echo 'nothing implemented'
+          }
         }
     }
 }
