@@ -1,32 +1,16 @@
-#!groovy
 
 pipeline {
-  agent {
-    docker { image 'centos:latest' }
-  }
-
-  environment {
-    EPOCH = System.currentTimeMillis()
-  }
-    
-  stages {
-    stage('Clean') { 
-      steps { 
-        sh 'rm -f *.tar.gz'
-        sh 'rm -rf httpd-*'
-      }
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }
     }
-    stage('Checkout'){
-      steps {
-          checkout scm
-      }
-    }
-    stage('Build') {
-      steps {
-        sh 'pwd'
-        sh 'ls -lah'
-        sh './build.sh compile --epoch=${EPOCH}'
-      }
-    }
-  }
 }
+
